@@ -7,7 +7,7 @@ namespace IL_TabView {
     [RequireComponent (typeof (Image))]
     [RequireComponent (typeof (Mask))]
     [RequireComponent (typeof (ScrollRect))]
-    public abstract class TabViewScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler {
+    public class TabViewScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler {
         [Tooltip ("Set starting page index - starting from 0")]
         public int startingPage = 0;
         [Tooltip ("Threshold time for fast swipe in seconds")]
@@ -55,8 +55,12 @@ namespace IL_TabView {
         // container with Image components - one Image for each page
         private List<Image> pageSelectionImages;
 
-        public abstract void IL_Start();
-        public abstract void IL_Update();
+        public virtual void IL_Start(){
+
+        }
+        public virtual void IL_Update(){
+
+        }
         //------------------------------------------------------------------------
         void Start () {
             scrollRectComponent = GetComponent<ScrollRect> ();

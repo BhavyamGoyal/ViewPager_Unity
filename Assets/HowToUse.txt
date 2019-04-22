@@ -1,0 +1,15 @@
+SETUP
+-Create a class, say tab.cs 
+-import IL_TabView like: this- using IL_TabView;
+-do not extend this class with a monobehaviour instead extend with TabViewScroll like below:
+	public class tab: TabviewScroll{
+	 }
+-if you want to use start and update functions here you can override the functions as bellow:
+	public override IL_Update(){}
+	public override IL_Start(){}
+	//these functions will work like Update() and Start();
+
+-rest of the functions that you use in monobehviour can be used as it is.
+
+*WARNING: Do not define Start and Update Function in the child script. to use Update() and Start use the above methode.
+ 
