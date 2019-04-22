@@ -404,18 +404,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 502440068}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1551962745}
-        m_MethodName: LerpToPage
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &502440068
@@ -631,18 +620,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1234949442}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1551962745}
-        m_MethodName: LerpToPage
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1234949442
@@ -914,18 +892,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1376300221}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1551962745}
-        m_MethodName: LerpToPage
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1376300221
@@ -969,11 +936,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1551962740}
-  - component: {fileID: 1551962745}
   - component: {fileID: 1551962744}
   - component: {fileID: 1551962743}
   - component: {fileID: 1551962742}
   - component: {fileID: 1551962741}
+  - component: {fileID: 1551962745}
   m_Layer: 5
   m_Name: scroll_snap
   m_TagString: Untagged
@@ -1084,7 +1051,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1551962739}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0eae15c03af9a4864b04e9d4851cc412, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a6f407e201ec4510afd129a40ed9974, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startingPage: 0
@@ -1096,6 +1063,12 @@ MonoBehaviour:
   unselectedPage: {fileID: 0}
   selectedPage: {fileID: 0}
   pageSelectionIcons: {fileID: 0}
+  tabButtons:
+  - {fileID: 1727692635}
+  - {fileID: 1904238769}
+  - {fileID: 502440067}
+  - {fileID: 1234949441}
+  - {fileID: 1376300220}
 --- !u!1 &1727692633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1170,18 +1143,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1727692636}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1551962745}
-        m_MethodName: LerpToPage
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1727692636
@@ -1421,18 +1383,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1904238770}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1551962745}
-        m_MethodName: LerpToPage
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1904238770

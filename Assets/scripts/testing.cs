@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using IL_TabView;
 
-public class testing :ScrollSnapRect{
+public class testing :TabViewScroll{
 	public override void IL_Start () {
 		
 	}

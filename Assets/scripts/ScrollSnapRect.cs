@@ -7,7 +7,7 @@ namespace IL_TabView {
     [RequireComponent (typeof (Image))]
     [RequireComponent (typeof (Mask))]
     [RequireComponent (typeof (ScrollRect))]
-    public abstract class ScrollSnapRect : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler {
+    public abstract class TabViewScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler {
         [Tooltip ("Set starting page index - starting from 0")]
         public int startingPage = 0;
         [Tooltip ("Threshold time for fast swipe in seconds")]
