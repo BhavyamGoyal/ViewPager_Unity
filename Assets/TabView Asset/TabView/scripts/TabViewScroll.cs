@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 namespace IL_TabView {
-    
+
     public class TabViewScroll : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler {
         [Tooltip ("Set starting page index - starting from 0")]
         public int startingPage = 0;
@@ -27,16 +27,17 @@ namespace IL_TabView {
         [Tooltip ("Set the Container that Has All the buttons")]
         public RectTransform buttonsContainer;
         [Tooltip ("Check this if you want to use buttons")]
-        public bool useButtons=false;
+        public bool useButtons = false;
 
-        private float buttonHeight=0 ;
+        private float buttonHeight = 0;
         private int fastSwipeMaxLimit;
         private ScrollRect scrollRectComponent;
         private RectTransform scrollRectRect;
         private RectTransform container;
-        // number of pages in container
+        // number of pages and buttons in container
         private int pageCount;
         private int currentPage;
+        private int buttonsCount;
 
         // whether lerping is in progress and target lerp position
         private bool lerp;
@@ -56,16 +57,19 @@ namespace IL_TabView {
         // container with Image components - one Image for each page
         private List<Image> pageSelectionImages;
 
+        //------------------------------------------------------------------------
         public virtual void IL_Start () {
 
         }
+        //------------------------------------------------------------------------
         public virtual void IL_Update () {
 
         }
-        public void SetInspector(){
-            gameObject.AddComponent<Image>();
-            gameObject.AddComponent<Mask>();
-            gameObject.AddComponent<ScrollRect>();
+        //------------------------------------------------------------------------
+        public void SetInspector () {
+            gameObject.AddComponent<Image> ();
+            gameObject.AddComponent<Mask> ();
+            gameObject.AddComponent<ScrollRect> ();
         }
         //------------------------------------------------------------------------
         void Start () {
@@ -73,14 +77,19 @@ namespace IL_TabView {
             scrollRectRect = GetComponent<RectTransform> ();
             container = scrollRectComponent.content;
             pageCount = container.childCount;
+            buttonsCount = buttonsContainer.childCount;
             lerp = false;
-            if(useButtons){
+            if (useButtons) {
+                if (pageCount != buttonsCount) {
+                    Debug.LogError ("Number of buttons is not equal to number of pages");
+                } else {
                     for (int i = 0; i < pageCount; i++) {
                         tabButtons.Add (buttonsContainer.GetChild (i).GetComponent<Button> ());
                         int x = i;
                         tabButtons[i].onClick.AddListener (() => SetPage (x));
                     }
                     SetButtonsPosition ();
+                }
             }
             SetPagePositions ();
             SetPage (startingPage);
@@ -88,8 +97,9 @@ namespace IL_TabView {
             SetPageSelection (startingPage);
             IL_Start ();
         }
+        //------------------------------------------------------------------------
         public void SetButtonsPosition () {
-            //setting the position of buttons
+            //setting the position of buttons and their sizes.
             Vector2 buttonAnchors = new Vector2 (0.5f, 0);
             buttonsContainer.anchorMin = buttonAnchors;
             buttonsContainer.anchorMax = buttonAnchors;
@@ -98,19 +108,26 @@ namespace IL_TabView {
             buttonsContainer.sizeDelta = new Vector2 (scrollRectRect.rect.width, buttonHeight);
             buttonsContainer.anchoredPosition = new Vector3 (0, 0, 0);
             float buttonWidth = scrollRectRect.rect.width / pageCount;
+
             if (tabButtons.Count % 2 == 0) {
                 for (int i = 0; i < tabButtons.Count; i++) {
+                    //calculating and setting button size.
                     tabButtons[i].gameObject.GetComponent<RectTransform> ().sizeDelta = new Vector2 (buttonWidth, buttonHeight);
+                    //calculating and setting button position.
                     tabButtons[i].gameObject.GetComponent<RectTransform> ().anchoredPosition = new Vector3 (((i - ((tabButtons.Count - 1) / 2)) * buttonWidth) - (buttonWidth / 2), 0, 0);
                 }
             } else {
                 for (int i = 0; i < tabButtons.Count; i++) {
+                    //calculating and setting button size.
                     tabButtons[i].gameObject.GetComponent<RectTransform> ().sizeDelta = new Vector2 (buttonWidth, buttonHeight);
+                    //calculating and setting button position.
                     tabButtons[i].gameObject.GetComponent<RectTransform> ().anchoredPosition = new Vector3 ((i - (tabButtons.Count / 2)) * buttonWidth, 0, 0);
                 }
             }
         }
+        //------------------------------------------------------------------------
         public void OnDisable () {
+            //removing listeners from buttons.
             if (useButtons) {
                 for (int i = 0; i < pageCount; i++) {
                     int x = i;
@@ -148,10 +165,10 @@ namespace IL_TabView {
             int containerWidth = 0;
             int containerHeight = 0;
             float heightOfPage;
-            if(useButtons){
-                heightOfPage=scrollRectRect.rect.height*(1-.12f);
-            }else{
-                heightOfPage=scrollRectRect.rect.height;
+            if (useButtons) {
+                heightOfPage = scrollRectRect.rect.height * (1 - .12f);
+            } else {
+                heightOfPage = scrollRectRect.rect.height;
             }
             // screen width in pixels of scrollrect window
             width = (int) scrollRectRect.rect.width;
@@ -165,7 +182,7 @@ namespace IL_TabView {
             // set width of container
             Vector2 newSize = new Vector2 (containerWidth, containerHeight);
             container.sizeDelta = newSize;
-            Vector3 newPosition = new Vector3 (containerWidth / 2,0,0);
+            Vector3 newPosition = new Vector3 (containerWidth / 2, 0, 0);
             container.anchoredPosition = newPosition;
 
             // delete any previous settings
@@ -175,10 +192,10 @@ namespace IL_TabView {
             for (int i = 0; i < pageCount; i++) {
                 RectTransform child = container.GetChild (i).GetComponent<RectTransform> ();
                 Vector2 childPosition;
-                child.sizeDelta=new Vector2(width,heightOfPage);
-                childPosition = new Vector2 (i * width - containerWidth / 2 + offsetX,buttonHeight/2);
+                child.sizeDelta = new Vector2 (width, heightOfPage);
+                childPosition = new Vector2 (i * width - containerWidth / 2 + offsetX, buttonHeight / 2);
                 child.anchoredPosition = childPosition;
-                childPosition.y=0;
+                childPosition.y = 0;
                 pagePositions.Add (-childPosition);
             }
 
